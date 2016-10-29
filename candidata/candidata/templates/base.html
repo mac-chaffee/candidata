@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>hacknc2016</title>
+    <!-- Bootstrap -->
+    <script src="tether.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'stylesheet.css' %}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/js/bootstrap.min.js" integrity="sha384-BLiI7JTZm+JWlgKa0M0kGRpJbF2J8q+qreVrKBC47e3K6BW78kGLrCkeRX6I9RoK" crossorigin="anonymous"></script>
+    <script src="politifact.js"></script>
+  </head>
+  <body>
+      <h1>What do you care about in this election?</h1>
+      <div class="candidate-row">
+        <div class="candidate-col">
+            <img class="head" src="images/hillary.png" />
+            <div id="hillary-clinton-div" class="candidate-data">
+              <button id="load-clinton" class="btn btn-primary">Load</button>
+            </div>
+        </div>
+        <div class="candidate-col">
+          <img class="head" src="images/gary.png" />
+          <div id="gary-johnson-div" class="candidate-data">
+            <button id="load-johnson" class="btn btn-primary">Load</button>
+          </div>
+        </div>
+        <div class="candidate-col">
+          <img class="head" src="images/donald.png" />
+          <div id="donald-trump-div" class="candidate-data">
+            <button id="load-trump" class="btn btn-primary">Load</button>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
