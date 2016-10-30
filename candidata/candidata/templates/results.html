@@ -14,10 +14,10 @@
             <span class="industryName">Big Farma' Brown</span>
             <span class="contribution">$57934872</span>
           </p>
-          {% for key, values in request.session.os_data %}
+          {% for key, values in request.session.os_data.items %}
           <p>
-            <span class="industryName">values ["industryName"]</span>
-            <span class="contribution">values ["contribution"]</span>
+            <span class="industryName">{{values ["industryName"]}}</span>
+            <span class="contribution">{{values ["contribution"]}}</span>
           </p>
           {% endfor %}
         </div>

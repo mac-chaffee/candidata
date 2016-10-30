@@ -11,7 +11,6 @@ class Home(FormView):
 
     def form_valid(self, form):
         topic = form.cleaned_data.get("issue")
-        import pdb; pdb.set_trace()
         # Get the OpenSecrets data on the given topic
         self.request.session["os_data"] = {
             "hillary_os": getContributionsByIssue("hillary-clinton", topic),
