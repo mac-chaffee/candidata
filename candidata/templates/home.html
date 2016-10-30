@@ -18,6 +18,12 @@
       <img class="head" src="{% static 'donald.png' %}" />
       <div id="donald-trump-div" class="candidate-data">
         <h1>Donald Trump</h1>
+        <span class="headingInBox">POLLING AVERAGE</span>
+        <span class="polling-number">
+          {{request.session.polling_data.donald_polling}}%
+        </span>
+        <br />
+        <span class="headingInBox">RECENT STATEMENTS</span>
         {% for key, value in request.session.recent_statements.donald_statements.items %}
         <p>
           <span class="statement">{{value.0 | striptags}}</span> <span class="{{value.1}}">{{value.1}}</span>
@@ -36,6 +42,12 @@
       <img class="head" src="{% static 'gary.png' %}" />
       <div id="gary-johnson-div" class="candidate-data">
         <h1>Gary Johnson</h1>
+        <span class="headingInBox">POLLING AVERAGE</span>
+        <span class="polling-number">
+          {{request.session.polling_data.gary_polling}}%
+        </span>
+        <br />
+        <span class="headingInBox">RECENT STATEMENTS</span>
         {% for key, value in request.session.recent_statements.gary_statements.items %}
         <p>
           <span class="statement">{{value.0 | striptags}}</span> <span class="{{value.1}}">{{value.1}}</span>
@@ -54,6 +66,12 @@
         <img class="head" src="{% static 'hillary.png' %}" />
         <div id="hillary-clinton-div" class="candidate-data">
           <h1>Hillary Clinton</h1>
+          <span class="headingInBox">POLLING AVERAGE</span>
+          <span class="polling-number">
+            {{request.session.polling_data.hillary_polling}}%
+          </span>
+          <br />
+          <span class="headingInBox">RECENT STATEMENTS</span>
           {% for key, value in request.session.recent_statements.hillary_statements.items %}
           <p>
             <span class="statement">{{value.0 | striptags}}</span> <span class="{{value.1}}">{{value.1}}</span>
