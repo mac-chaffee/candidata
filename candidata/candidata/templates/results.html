@@ -10,14 +10,15 @@
     <div class="candidate-col">
       <img class="head" src="{% static 'donald.png' %}" />
       <div id="donald-trump-div" class="candidate-data">
+        <span class="headingInBox">POLLING AVERAGE</span>
         <span class="polling-number">
-          {{request.session.polling_data.donald_polling}}
+          {{request.session.polling_data.donald_polling}}%
         </span>
         <br />
-        <br />
+        <span class="headingInBox">RELATED STATEMENTS</span>
         {% for key, value in request.session.pf_data.donald_pf.items %}
         <p>
-          <span class="statement">{{value.0 | striptags}}</span> | <span class="truthy">{{value.1}}</span>
+          <span class="statement">{{value.0 | striptags}}</span> <span class="{{value.1}}">{{value.1}}</span>
         </p>
         {% endfor %}
         <script type="text/javascript">
@@ -28,7 +29,7 @@
         </script>
       </div>
       <div id="donald-trump-contrib" class="candidate-contributions">
-        <h2>Contributions</h2>
+        <span class="headingOutside">RELATED CONTRIBUTIONS</span>
         {% for entry in request.session.os_data.donald_os %}
         <p>
           <span class="industryName">{{entry.industryTitle}}</span>
@@ -40,14 +41,15 @@
     <div class="candidate-col">
       <img class="head" src="{% static 'gary.png' %}" />
       <div id="gary-johnson-div" class="candidate-data">
+        <span class="headingInBox">POLLING AVERAGE</span>
         <span class="polling-number">
-          {{request.session.polling_data.gary_polling}}
+          {{request.session.polling_data.gary_polling}}%
         </span>
         <br />
-        <br />
+        <span class="headingInBox">RELATED STATEMENTS</span>
         {% for key, value in request.session.pf_data.gary_pf.items %}
         <p>
-          <span class="statement">{{value.0 | striptags}}</span> | <span class="truthy">{{value.1}}</span>
+          <span class="statement">{{value.0 | striptags}}</span> <span class="{{value.1}}">{{value.1}}</span>
         </p>
         {% endfor %}
         <script type="text/javascript">
@@ -58,7 +60,7 @@
         </script>
      </div>
       <div id="gary-johnson-contrib" class="candidate-contributions">
-        <h2>Contributions</h2>
+        <span class="headingOutside">RELATED CONTRIBUTIONS</span>
         {% for entry in request.session.os_data.gary_os %}
         <p>
           <span class="industryName">{{entry.industryTitle}}</span>
@@ -70,13 +72,15 @@
     <div class="candidate-col">
         <img class="head" src="{% static 'hillary.png' %}" />
         <div id="hillary-clinton-div" class="candidate-data">
+          <span class="headingInBox">POLLING AVERAGE</span>
             <span class="polling-number">
-              {{request.session.polling_data.hillary_polling}}
+              {{request.session.polling_data.hillary_polling}}%
             </span>
             <br />
+            <span class="headingInBox">RELATED STATEMENTS</span>
             {% for key, value in request.session.pf_data.hillary_pf.items %}
             <p>
-              <span class="statement">{{value.0 | striptags}}</span> | <span class="truthy">{{value.1}}</span>
+              <span class="statement">{{value.0 | striptags}}</span> <span class=" {{value.1}} ">{{value.1}}</span>
             </p>
             {% endfor %}
             <script type="text/javascript">
@@ -87,7 +91,7 @@
             </script>
         </div>
         <div id="hillary-clinton-contrib" class="candidate-contributions">
-          <h2>Contributions</h2>
+          <span class="headingOutside">RELATED CONTRIBUTIONS</span>
           {% for entry in request.session.os_data.hillary_os %}
           <p>
             <span class="industryName">{{entry.industryTitle}}</span>
