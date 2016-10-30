@@ -1,8 +1,26 @@
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
+from .opensecrets import getContributionsByIssue
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import reverse
+from .forms import IssueForm
 
 
-class Home(TemplateView):
+class Home(FormView):
     template_name = 'home.html'
+    form_class = IssueForm
+
+    def form_valid(self, form):
+        topic = form.cleaned_data.get("issue")
+        import pdb; pdb.set_trace()
+        # Get the OpenSecrets data on the given topic
+        self.request.session["os_data"] = {
+            "hillary_os": getContributionsByIssue("hillary-clinton", topic),
+            "gary_os": getContributionsByIssue("gary-johnson", topic),
+            "trump_os": getContributionsByIssue("donald-trump", topic),
+        }
+
+        # TODO Get the Politifact data on the given topic
+        return HttpResponseRedirect(reverse('results'))
 
 
 class Results(TemplateView):

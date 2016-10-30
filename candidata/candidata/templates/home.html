@@ -7,7 +7,13 @@
     <div class="row">
         <div class="col-md-6 offset-md-3">
             <h1>What do you care about in this election?</h1>
-            <input type="select">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.issue }}
+                <br/>
+                <br/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </div>
 </div>
