@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, FormView
 from .readopensecrets import read_contributions, read_contributors
-from .readpolitifact import read_recent_statements
+from .readpolitifact import read_recent_statements, read_recent_statements_front
 from .fivethirtyeight import getPollNum
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import reverse
@@ -16,6 +16,11 @@ class Home(FormView):
             "hillary_contribs": read_contributors("hillary-clinton"),
             "gary_contribs": read_contributors("gary-johnson"),
             "donald_contribs": read_contributors("donald-trump")
+        }
+        self.request.session ["recent_statements"] = {
+            "hillary_statements": read_recent_statements_front("hillary-clinton"),
+            "gary_statements": read_recent_statements_front("gary-johnson"),
+            "donald_statements": read_recent_statements_front("donald-trump")
         }
         return super(Home, self).get(request)
 
