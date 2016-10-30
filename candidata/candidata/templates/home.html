@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load currency_tags %}
 
 {% block content %}
-
 <div class="top-form centered">
     <h1>What do you care about in this election?</h1>
     <form action="" method="POST">
@@ -13,5 +13,45 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-
+<div id="home" class="candidate-row">
+    <div class="candidate-col">
+      <img class="head" src="{% static 'donald.png' %}" />
+      <div id="donald-trump-div" class="candidate-data">
+        <h1>Donald Trump</h1>
+        <h4>Top Contributors</h4>
+        {% for entry in request.session.top_contribs.donald_contribs %}
+        <p>
+          <span class="industryName">{{entry.industryTitle}}</span>
+            <span class="contribution">{{ entry.contribution | nice_format }}</span>
+        </p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="candidate-col">
+      <img class="head" src="{% static 'gary.png' %}" />
+      <div id="gary-johnson-div" class="candidate-data">
+        <h1>Gary Johnson</h1>
+        <h4>Top Contributors</h4>
+        {% for entry in request.session.top_contribs.gary_contribs %}
+        <p>
+          <span class="industryName">{{entry.industryTitle}}</span>
+            <span class="contribution">{{ entry.contribution | nice_format }}</span>
+        </p>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="candidate-col">
+        <img class="head" src="{% static 'hillary.png' %}" />
+        <div id="hillary-clinton-div" class="candidate-data">
+          <h1>Hillary Clinton</h1>
+          <h4>Top Contributors</h4>
+          {% for entry in request.session.top_contribs.hillary_contribs %}
+          <p>
+            <span class="industryName">{{entry.industryTitle}}</span>
+              <span class="contribution">{{ entry.contribution | nice_format }}</span>
+          </p>
+          {% endfor %}
+        </div>
+    </div>
+</div>
 {% endblock %}
