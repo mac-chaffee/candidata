@@ -6,6 +6,9 @@
 <div class="candidate-row">
     <div class="candidate-col">
         <img class="head" src="{% static 'hillary.png' %}" />
+        <span class="polling-number">
+          {{request.session.polling_data}}
+        </span>
         <div id="hillary-clinton-div" class="candidate-data">
             {% for key, value in request.session.pf_data.hillary_pf.items %}
             <p>

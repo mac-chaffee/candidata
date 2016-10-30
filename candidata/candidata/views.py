@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView, FormView
 from .readopensecrets import read_contributions
 from .readpolitifact import read_recent_statements
+from .fivethirtyeight import getPollNum
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import reverse
 from .forms import IssueForm
@@ -25,6 +26,14 @@ class Home(FormView):
             "gary_pf": read_recent_statements("gary-johnson", topic),
             "donald_pf": read_recent_statements("donald-trump", topic),
         }
+
+        # Get polling data from 538
+        self.request.session["polling_data"] = {
+            "hillary_polling": getPollNum("hillary-clinton"),
+            "gary_polling": getPollNum("gary-johnson"),
+            "donald_polling": getPollNum("donald-trump")
+        }
+        print(self.request.session["polling_data"])
         return HttpResponseRedirect(reverse('results'))
 
 
