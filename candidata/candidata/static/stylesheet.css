@@ -50,6 +50,14 @@ body {
   border-radius: 5px;
 }
 
+span.polling-number {
+  font-weight: bold;
+  font-size: 115%;
+}
+span.polling-number:after {
+  content: "%";
+}
+
 span.contribution {
   font-weight: bold;
 }

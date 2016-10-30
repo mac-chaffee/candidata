@@ -6,10 +6,11 @@
 <div class="candidate-row">
     <div class="candidate-col">
         <img class="head" src="{% static 'hillary.png' %}" />
-        <span class="polling-number">
-          {{request.session.polling_data}}
-        </span>
         <div id="hillary-clinton-div" class="candidate-data">
+            <span class="polling-number">
+              {{request.session.polling_data.hillary_polling}}
+            </span>
+            <br />
             {% for key, value in request.session.pf_data.hillary_pf.items %}
             <p>
               {{value.0 | striptags}} | {{value.1}}
@@ -35,6 +36,11 @@
     <div class="candidate-col">
       <img class="head" src="{% static 'gary.png' %}" />
       <div id="gary-johnson-div" class="candidate-data">
+        <span class="polling-number">
+          {{request.session.polling_data.gary_polling}}
+        </span>
+        <br />
+        <br />
         {% for key, value in request.session.pf_data.gary_pf.items %}
         <p>
           {{value.0 | striptags}} | {{value.1}}
@@ -60,6 +66,11 @@
     <div class="candidate-col">
       <img class="head" src="{% static 'donald.png' %}" />
       <div id="donald-trump-div" class="candidate-data">
+        <span class="polling-number">
+          {{request.session.polling_data.donald_polling}}
+        </span>
+        <br />
+        <br />
         {% for key, value in request.session.pf_data.donald_pf.items %}
         <p>
           {{value.0 | striptags}} | {{value.1}}
