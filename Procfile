@@ -1,1 +1,1 @@
-web: gunicorn candidata.candidata.wsgi --preload --log-file -
+web: gunicorn candidata.wsgi --preload --log-file -
