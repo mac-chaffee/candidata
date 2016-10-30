@@ -26,7 +26,7 @@ def getContributionsByIssue(candidateString, issueString):
     for industryString in industries:
         args = {
             "method": "CandIndByInd",
-            "apikey": "aa677ff4c6fe947883bcfa3e844df599",
+            "apikey": "0a742eb9c1549ea59ebb9a25bb440de8",
             "cid": candidateToIDMap [candidateString],
             "ind": industryString,
             "cycle": "2016",
