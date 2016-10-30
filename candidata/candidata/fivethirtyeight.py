@@ -14,7 +14,7 @@ def getPollNum(candidateString):
     r = r.json()
 
     # get current polling average
-    currentPollNum = r["forecasts"]["latest"][candidateMap[candidateString]]["models"]["polls"]["forecast"]
+    currentPollNum = int(r["forecasts"]["latest"][candidateMap[candidateString]]["models"]["polls"]["forecast"])
 
     print(currentPollNum)
     return currentPollNum
