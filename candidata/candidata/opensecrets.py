@@ -32,7 +32,6 @@ def getContributionsByIssue(candidateString, issueString):
             "cycle": "2016",
             "output": "json"
         }
-        print(args ["cid"], args ["ind"])
         r = requests.get("http://www.opensecrets.org/api/", args)
         r = r.json()
 
@@ -48,8 +47,7 @@ def getContributionsByIssue(candidateString, issueString):
             }
         );
 
-    print(contributionsByIndustry)
     return contributionsByIndustry
 
 # Test
-getContributionsByIssue("hillary-clinton", "Terrorism")
+#getContributionsByIssue("hillary-clinton", "Terrorism")
