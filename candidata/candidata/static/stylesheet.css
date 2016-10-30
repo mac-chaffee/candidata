@@ -31,6 +31,10 @@ body {
   top: -10px;
 }
 
+span.contribution {
+  font-weight: bold;
+}
+
 #donald-trump-div {
   background-color: #d8171e;
 }
