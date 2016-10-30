@@ -1,3 +1,5 @@
+import os
+import json
 import requests
 
 candidateToIDMap = {
@@ -12,6 +14,7 @@ issueToIndustryMap = {
     "Terrorism": ["D01", "D02", "D03"],
     "Environment": ["E01", "E10"]
 }
+
 
 def getContributionsByIssue(candidateString, issueString):
 
@@ -49,8 +52,13 @@ def getContributionsByIssue(candidateString, issueString):
             }
         );
 
-    print(contributionsByIndustry)
-    return contributionsByIndustry
+    current_dir = os.path.dirname(__file__)
+    file = os.path.join(current_dir, "data", "os-%s-%s.json" % (candidateString, issueString))
+    with open(file, mode="w") as jsonfile:
+        json.dump(contributionsByIndustry, jsonfile)
 
-# Test
-#getContributionsByIssue("donald-trump", "Health Care")
+current_dir = os.path.dirname(__file__)
+
+for name in candidateToIDMap:
+    for key, val in issueToIndustryMap.items():
+        getContributionsByIssue(name, key)
