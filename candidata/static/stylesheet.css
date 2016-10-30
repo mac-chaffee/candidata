@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Cabin|Quicksand|Bungee');
+
 body {
   color: #fff;
   text-align: center;
@@ -55,18 +57,56 @@ div#home div.candidate-data {
 
 span.polling-number {
   font-weight: bold;
-  font-size: 32pt;
-}
-span.polling-number:after {
-  content: "%";
+  font-size: 64pt;
+  font-family: 'Quicksand', sans-serif;
+  text-shadow: 2px 2px lightblue;
 }
 
 span.contribution {
   font-weight: bold;
 }
 
-span.truthy {
+span.True {
   font-size: 16pt;
+  color: green;
+}
+span.Mostly.True {
+  font-size: 16pt;
+  color: lightgreen;
+}
+span.Half-True {
+  font-size: 16pt;
+  color: yellow;
+}
+span.Mostly.False {
+  font-size: 16pt;
+  color: orange;
+}
+span.False {
+  font-size: 16pt;
+  color: red;
+}
+span.Pants {
+  font-size: 16pt;
+  color: red;
+}
+
+span.statement {
+  font-family: 'Cabin', sans-serif;
+  font-size: 16pt;
+}
+
+span.headingInBox {
+  font-family: 'Bungee', cursive;
+  font-size: 32pt;
+  color: white;
+  text-shadow: -3px 2px black;
+}
+
+span.headingOutside {
+  font-family: 'Bungee', cursive;
+  font-size: 24pt;
+  color: white;
 }
 
 #donald-trump-div {
