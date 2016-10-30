@@ -8,7 +8,7 @@
     <div class="candidate-col">
         <img class="head" src="{% static 'hillary.png' %}" />
         <div id="hillary-clinton-div" class="candidate-data">
-            <!--{{request.session.pf_data.hillary_pf}}-->
+            {{request.session.pf_data.hillary_pf}}
         </div>
         <div id="hillary-clinton-contrib" class="candidate-contributions">
           {% for entry in request.session.os_data.hillary_os %}
