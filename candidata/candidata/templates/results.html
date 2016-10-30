@@ -13,17 +13,15 @@
               {{value.0 | striptags}} | {{value.1}}
             </p>
             {% endfor %}
+            <script type="text/javascript">
+              var x = $("div#hillary-clinton-div").children("p").length;
+              if (x == 0) {
+                $("div#hillary-clinton-div").append("<p>Politifact has not rated any statements for this candidate on this issue</p>");
+              }
+            </script>
         </div>
         <div id="hillary-clinton-contrib" class="candidate-contributions">
           <h2>Contributions</h2>
-          {% if request.session.os_data.hillary_os.count < 5 %}
-            <script type = "text/javascript">
-              var x = {{request.session.os_data.hillary_os.count}}
-              while ( x < 5 ) {
-                $("div.candidate-contributions").append("<br />");
-              }
-            </script>
-          {% endif %}
           {% for entry in request.session.os_data.hillary_os %}
           <p>
             <span class="industryName">{{entry.industryTitle}}</span>
@@ -40,6 +38,12 @@
           {{value.0 | striptags}} | {{value.1}}
         </p>
         {% endfor %}
+        <script type="text/javascript">
+          var x = $("div#gary-johnson-div").children("p").length;
+          if (x == 0) {
+            $("div#gary-johnson-div").append("<p>Politifact has not rated any statements for this candidate on this issue</p>");
+          }
+        </script>
      </div>
       <div id="gary-johnson-contrib" class="candidate-contributions">
         <h2>Contributions</h2>
@@ -59,17 +63,15 @@
           {{value.0 | striptags}} | {{value.1}}
         </p>
         {% endfor %}
+        <script type="text/javascript">
+          var x = $("div#donald-trump-div").children("p").length;
+          if (x == 0) {
+            $("div#donald-trump-div").append("<p>Politifact has not rated any statements for this candidate on this issue</p>");
+          }
+        </script>
       </div>
       <div id="donald-trump-contrib" class="candidate-contributions">
         <h2>Contributions</h2>
-        {% if request.session.os_data.donald_os.count < 5 %}
-          <script type = "text/javascript">
-            var x = {{request.session.os_data.donald_os.count}}
-            while ( x < 5 ) {
-              $("div.candidate-contributions").append("<br />");
-            }
-          </script>
-        {% endif %}
         {% for entry in request.session.os_data.donald_os %}
         <p>
           <span class="industryName">{{entry.industryTitle}}</span>
