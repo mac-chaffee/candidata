@@ -23,6 +23,9 @@ body {
     justify-content: center;
 }
 
+div#home div.candidate-data {
+  height: 50vh;
+}
 .candidate-row {
   display: flex;
   flex-direction: row;
@@ -52,7 +55,7 @@ body {
 
 span.polling-number {
   font-weight: bold;
-  font-size: 115%;
+  font-size: 32pt;
 }
 span.polling-number:after {
   content: "%";
@@ -60,6 +63,10 @@ span.polling-number:after {
 
 span.contribution {
   font-weight: bold;
+}
+
+span.truthy {
+  font-size: 16pt;
 }
 
 #donald-trump-div {

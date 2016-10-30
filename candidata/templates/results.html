@@ -3,6 +3,9 @@
 {% load currency_tags %}
 {% block content %}
 
+<script type="text/javascript">
+</script>
+
 <div class="candidate-row">
     <div class="candidate-col">
       <img class="head" src="{% static 'donald.png' %}" />
@@ -14,7 +17,7 @@
         <br />
         {% for key, value in request.session.pf_data.donald_pf.items %}
         <p>
-          {{value.0 | striptags}} | {{value.1}}
+          <span class="statement">{{value.0 | striptags}}</span> | <span class="truthy">{{value.1}}</span>
         </p>
         {% endfor %}
         <script type="text/javascript">
@@ -44,7 +47,7 @@
         <br />
         {% for key, value in request.session.pf_data.gary_pf.items %}
         <p>
-          {{value.0 | striptags}} | {{value.1}}
+          <span class="statement">{{value.0 | striptags}}</span> | <span class="truthy">{{value.1}}</span>
         </p>
         {% endfor %}
         <script type="text/javascript">
@@ -73,7 +76,7 @@
             <br />
             {% for key, value in request.session.pf_data.hillary_pf.items %}
             <p>
-              {{value.0 | striptags}} | {{value.1}}
+              <span class="statement">{{value.0 | striptags}}</span> | <span class="truthy">{{value.1}}</span>
             </p>
             {% endfor %}
             <script type="text/javascript">

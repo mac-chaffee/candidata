@@ -1,6 +1,7 @@
 from django.views.generic import TemplateView, FormView
 from .readopensecrets import read_contributions
 from .readpolitifact import read_recent_statements
+from .opensecrets import getTopContributors
 from .fivethirtyeight import getPollNum
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import reverse
@@ -10,6 +11,14 @@ from .forms import IssueForm
 class Home(FormView):
     template_name = 'home.html'
     form_class = IssueForm
+
+    def get(self, request):
+        self.request.session ["top_contribs"] = {
+            "hillary_contribs": getTopContributors("hillary-clinton"),
+            "gary_contribs": getTopContributors("gary-johnson"),
+            "donald_contribs": getTopContributors("donald-trump")
+        }
+        return super(Home, self).get(request)
 
     def form_valid(self, form):
         topic = form.cleaned_data.get("issue")
