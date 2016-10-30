@@ -8,7 +8,11 @@
     <div class="candidate-col">
         <img class="head" src="{% static 'hillary.png' %}" />
         <div id="hillary-clinton-div" class="candidate-data">
-            {{request.session.pf_data.hillary_pf}}
+            {% for key, value in request.session.pf_data.hillary_pf.items %}
+            <p>
+              {{value.0 | striptags}} | {{value.1}}
+            </p>
+            {% endfor %}
         </div>
         <div id="hillary-clinton-contrib" class="candidate-contributions">
           {% for entry in request.session.os_data.hillary_os %}
@@ -22,8 +26,12 @@
     <div class="candidate-col">
       <img class="head" src="{% static 'gary.png' %}" />
       <div id="gary-johnson-div" class="candidate-data">
-        <button id="load-johnson" class="btn btn-primary">Load</button>
-      </div>
+        {% for key, value in request.session.pf_data.gary_pf.items %}
+        <p>
+          {{value.0 | striptags}} | {{value.1}}
+        </p>
+        {% endfor %}
+     </div>
       <div id="gary-johnson-contrib" class="candidate-contributions">
         {% for entry in request.session.os_data.gary_os %}
         <p>
@@ -36,7 +44,12 @@
     <div class="candidate-col">
       <img class="head" src="{% static 'donald.png' %}" />
       <div id="donald-trump-div" class="candidate-data">
-        <button id="load-trump" class="btn btn-primary">Load</button>
+        {% for entry in request.session.os_data.donald_os %}
+        <p>
+          <span class="industryName">{{entry.industryTitle}}</span>
+            <span class="contribution">{{ entry.contribution | nice_format }}</span>
+        </p>
+        {% endfor %}
       </div>
       <div id="donald-trump-contrib" class="candidate-contributions">
         {% for entry in request.session.os_data.donald_os %}
