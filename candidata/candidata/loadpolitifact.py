@@ -1,6 +1,7 @@
 import requests
 import json
 import os
+import re
 
 # correct discrepencies between APIs
 candidateMap = {
@@ -29,14 +30,18 @@ def getRecentStatementRulings(candidateString, issueString):
         "limit": 5,
         "format": "json"
     }
+
     r = requests.get("http://www.politifact.com/api/v/2/statement/", args)
     r = r.json()
+
+    # Remove HTML crap
+    cleanr = re.compile('&.*?;')
 
     # loop through the 5 statements/rulings we want to use
     for i in range(len(r["objects"])):
 
         # get the statements and rulings...
-        statement = r ["objects"] [i] ["statement"]
+        statement = re.sub(cleanr, '', r ["objects"] [i] ["statement"])
         ruling = r ["objects"] [i] ["ruling"] ["ruling"]
 
         # ...and put them in the object
