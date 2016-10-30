@@ -1,10 +1,24 @@
 import requests
 
+candidateToIDMap = {
+    "hillary-clinton": "N00000019",
+    "donald-trump": "N00023864",
+    "gary-johnson": "N00033226"
+}
+
+issueToIndustryMap = {
+    "health-care": ["H01, H02, H03, H04"],
+    "economy": ["F03", "F06", "F07", "F10"],
+    "terrorism": ["D01", "D02", "D03"],
+    "environment": ["E01", "E10"]
+}
+
 def getContributionsByIssue(candidateString, issueString):
 
-    # Pretend the issueString leads to this array of industry codes
-    industries = ["H01", "W06", "H02"]
+    # Get a list of industries that correspond to the issueString
+    industries = issueToIndustryMap [issueString]
 
+    # A dictionary in the form {industryName: monetaryContribution}
     contributionsByIndustry = {}
 
     # Loop through all industries that are tied to the given issue
@@ -12,7 +26,7 @@ def getContributionsByIssue(candidateString, issueString):
         args = {
             "method": "CandIndByInd",
             "apikey": "02f97765868d5fc01714c32686e5388e",
-            "cid": candidateString,
+            "cid": candidateToIDMap [candidateString],
             "ind": industryString,
             "cycle": "2016",
             "output": "json"
@@ -29,4 +43,4 @@ def getContributionsByIssue(candidateString, issueString):
     return contributionsByIndustry
 
 # Test
-getContributionsByIssue("N00000019", None)
+getContributionsByIssue("hillary-clinton", "terrorism")
