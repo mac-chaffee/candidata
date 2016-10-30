@@ -7,10 +7,10 @@ candidateToIDMap = {
 }
 
 issueToIndustryMap = {
-    "health-care": ["H01, H02, H03, H04"],
-    "economy": ["F03", "F06", "F07", "F10"],
-    "terrorism": ["D01", "D02", "D03"],
-    "environment": ["E01", "E10"]
+    "Health Care": ["H01, H02, H03, H04"],
+    "Economy": ["F03", "F06", "F07", "F10"],
+    "Terrorism": ["D01", "D02", "D03"],
+    "Environment": ["E01", "E10"]
 }
 
 def getContributionsByIssue(candidateString, issueString):
@@ -43,4 +43,4 @@ def getContributionsByIssue(candidateString, issueString):
     return contributionsByIndustry
 
 # Test
-getContributionsByIssue("hillary-clinton", "terrorism")
+getContributionsByIssue("hillary-clinton", "Economy")
