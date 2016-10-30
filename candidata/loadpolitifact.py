@@ -57,6 +57,10 @@ def getRecentStatements(candidateString):
     # object for storing statements and rulings
     statementsAndRulings = {}
 
+
+    # Remove HTML crap
+    cleanr = re.compile('&.*?;')
+
     # set up API call
     args = {
         "order_by": "ruling_date",
@@ -71,7 +75,7 @@ def getRecentStatements(candidateString):
     for i in range(len(r["objects"])):
 
         # get the statements and rulings...
-        statement = r ["objects"] [i] ["statement"]
+        statement = re.sub(cleanr, '', r ["objects"] [i] ["statement"])
         ruling = r ["objects"] [i] ["ruling"] ["ruling"]
 
         # ...and put them in the object
