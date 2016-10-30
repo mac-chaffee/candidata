@@ -1,4 +1,6 @@
-from django.forms import forms, fields
+from django import forms
+from django.forms import fields
+from django.forms.widgets import Select
 
 
 ISSUES = [("Economy", "Economy"), ("Health Care", "Health Care"),
@@ -6,4 +8,4 @@ ISSUES = [("Economy", "Economy"), ("Health Care", "Health Care"),
 
 
 class IssueForm(forms.Form):
-    issue = fields.ChoiceField(choices=ISSUES)
+    issue = fields.ChoiceField(widget=Select(attrs={'class': 'form-control'}), choices=ISSUES)

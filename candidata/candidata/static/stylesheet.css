@@ -1,9 +1,25 @@
 body {
   color: #fff;
   text-align: center;
-  background-color: #159957;
-  background-image: linear-gradient(120deg, #155799, #159957);
+  background-color: #CCCCCC;
   height: 3000px;
+}
+
+.top-form {
+    width: 100%;
+    min-height: 600px;
+    background-image: linear-gradient(120deg, #155799, #159957);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
 }
 
 .candidate-row {
