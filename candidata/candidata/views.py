@@ -1,6 +1,6 @@
 from django.views.generic import TemplateView, FormView
 from .opensecrets import getContributionsByIssue
-from .politifact import getRecentStatementRulings
+from .readpolitifact import read_recent_statements
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import reverse
 from .forms import IssueForm
@@ -21,9 +21,9 @@ class Home(FormView):
 
         # Get the Politifact data on the given topic
         self.request.session["pf_data"] = {
-            "hillary_pf": getRecentStatementRulings("hillary-clinton", topic),
-            "gary_pf": getRecentStatementRulings("gary-johnson", topic),
-            "trump_pf": getRecentStatementRulings("donald-trump", topic),
+            "hillary_pf": read_recent_statements("hillary-clinton", topic),
+            "gary_pf": read_recent_statements("gary-johnson", topic),
+            "trump_pf": read_recent_statements("donald-trump", topic),
         }
         return HttpResponseRedirect(reverse('results'))
 
