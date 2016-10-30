@@ -57,7 +57,7 @@ div#home div.candidate-data {
 
 span.polling-number {
   font-weight: bold;
-  font-size: 64pt;
+  font-size: 50pt;
   font-family: 'Quicksand', sans-serif;
   text-shadow: 2px 2px lightblue;
 }
@@ -98,7 +98,7 @@ span.statement {
 
 span.headingInBox {
   font-family: 'Bungee', cursive;
-  font-size: 32pt;
+  font-size: 30pt;
   color: white;
   text-shadow: -3px 2px black;
 }
@@ -126,10 +126,12 @@ span.headingOutside {
 .candidate-col {
   padding: 2vw;
 }
-@media (max-width: 767px) {
+@media (max-width: 850px) {
   .candidate-row {
     flex-direction: column;
+    align-items: center;
   }
+
   .candidate-data {
     width: 80vw;
     min-width: 200px;
