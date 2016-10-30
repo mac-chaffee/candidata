@@ -7,7 +7,7 @@ candidateToIDMap = {
 }
 
 issueToIndustryMap = {
-    "Health Care": ["H01, H02, H03, H04"],
+    "Health Care": ["H01", "H02", "H03", "H04"],
     "Economy": ["F03", "F06", "F07", "F10"],
     "Terrorism": ["D01", "D02", "D03"],
     "Environment": ["E01", "E10"]
@@ -33,6 +33,8 @@ def getContributionsByIssue(candidateString, issueString):
             "output": "json"
         }
         r = requests.get("http://www.opensecrets.org/api/", args)
+        if r.status_code == 404:
+            continue
         r = r.json()
 
         # Get the title of the industry and their contribution to the candidate campaign
@@ -47,7 +49,8 @@ def getContributionsByIssue(candidateString, issueString):
             }
         );
 
+    print(contributionsByIndustry)
     return contributionsByIndustry
 
 # Test
-#getContributionsByIssue("hillary-clinton", "Terrorism")
+#getContributionsByIssue("donald-trump", "Health Care")

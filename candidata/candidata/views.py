@@ -16,14 +16,14 @@ class Home(FormView):
         self.request.session["os_data"] = {
             "hillary_os": getContributionsByIssue("hillary-clinton", topic),
             "gary_os": getContributionsByIssue("gary-johnson", topic),
-            "trump_os": getContributionsByIssue("donald-trump", topic),
+            "donald_os": getContributionsByIssue("donald-trump", topic),
         }
 
         # Get the Politifact data on the given topic
         self.request.session["pf_data"] = {
             "hillary_pf": getRecentStatementRulings("hillary-clinton", topic),
             "gary_pf": getRecentStatementRulings("gary-johnson", topic),
-            "trump_pf": getRecentStatementRulings("donald-trump", topic),
+            "donald_pf": getRecentStatementRulings("donald-trump", topic),
         }
         return HttpResponseRedirect(reverse('results'))
 

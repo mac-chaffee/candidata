@@ -15,6 +15,15 @@
             {% endfor %}
         </div>
         <div id="hillary-clinton-contrib" class="candidate-contributions">
+          <h2>Contributions</h2>
+          {% if request.session.os_data.hillary_os.count < 5 %}
+            <script type = "text/javascript">
+              var x = {{request.session.os_data.hillary_os.count}}
+              while ( x < 5 ) {
+                $("div.candidate-contributions").append("<br />");
+              }
+            </script>
+          {% endif %}
           {% for entry in request.session.os_data.hillary_os %}
           <p>
             <span class="industryName">{{entry.industryTitle}}</span>
@@ -33,6 +42,7 @@
         {% endfor %}
      </div>
       <div id="gary-johnson-contrib" class="candidate-contributions">
+        <h2>Contributions</h2>
         {% for entry in request.session.os_data.gary_os %}
         <p>
           <span class="industryName">{{entry.industryTitle}}</span>
@@ -44,18 +54,26 @@
     <div class="candidate-col">
       <img class="head" src="{% static 'donald.png' %}" />
       <div id="donald-trump-div" class="candidate-data">
-        {% for entry in request.session.os_data.donald_os %}
+        {% for key, value in request.session.pf_data.donald_pf.items %}
         <p>
-          <span class="industryName">{{entry.industryTitle}}</span>
-            <span class="contribution">{{ entry.contribution | nice_format }}</span>
+          {{value.0 | striptags}} | {{value.1}}
         </p>
         {% endfor %}
       </div>
       <div id="donald-trump-contrib" class="candidate-contributions">
+        <h2>Contributions</h2>
+        {% if request.session.os_data.donald_os.count < 5 %}
+          <script type = "text/javascript">
+            var x = {{request.session.os_data.donald_os.count}}
+            while ( x < 5 ) {
+              $("div.candidate-contributions").append("<br />");
+            }
+          </script>
+        {% endif %}
         {% for entry in request.session.os_data.donald_os %}
         <p>
           <span class="industryName">{{entry.industryTitle}}</span>
-          <span class="contribution">{{ entry.contribution | nice_format }}</span>
+            <span class="contribution">{{ entry.contribution | nice_format }}</span>
         </p>
         {% endfor %}
       </div>
