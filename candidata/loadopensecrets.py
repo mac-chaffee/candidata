@@ -29,7 +29,7 @@ def getContributionsByIssue(candidateString, issueString):
     for industryString in industries:
         args = {
             "method": "CandIndByInd",
-            "apikey": "0a742eb9c1549ea59ebb9a25bb440de8",
+            "apikey": "f917920880a3cb2dde278f3565c3defe",
             "cid": candidateToIDMap [candidateString],
             "ind": industryString,
             "cycle": "2016",
@@ -41,7 +41,6 @@ def getContributionsByIssue(candidateString, issueString):
         r = r.json()
 
         # Get the title of the industry and their contribution to the candidate campaign
-        industryEntry = {}
         industryTitle = r ["response"] ["candIndus"] ["@attributes"] ["industry"]
         contribution = r ["response"] ["candIndus"] ["@attributes"] ["total"]
 
@@ -57,8 +56,45 @@ def getContributionsByIssue(candidateString, issueString):
     with open(file, mode="w") as jsonfile:
         json.dump(contributionsByIndustry, jsonfile)
 
+def getTopContributors(candidateString):
+
+    # A list of dictionaries in the form {industryTitle: value, contribution: value}
+    contributionsByIndustry = []
+
+    args = {
+        "method": "candIndustry",
+        "apikey": "f917920880a3cb2dde278f3565c3defe",
+        "cid": candidateToIDMap [candidateString],
+        "cycle": "2016",
+        "output": "json"
+    }
+    r = requests.get("http://www.opensecrets.org/api/", args)
+    print(r)
+    if r.status_code == 404:
+        return []
+    r = r.json()
+
+    # Get the industries
+    industries = r ["response"] ["industries"] ["industry"]
+    for industry in industries:
+        industryTitle = industry ["@attributes"] ["industry_name"]
+        contribution = industry ["@attributes"] ["total"]
+
+        contributionsByIndustry.append(
+            {
+                "industryTitle": industryTitle,
+                "contribution": int(contribution)
+            }
+        );
+
+    current_dir = os.path.dirname(__file__)
+    file = os.path.join(current_dir, "data", "ostop-%s.json" % (candidateString))
+    with open(file, mode="w") as jsonfile:
+        json.dump(contributionsByIndustry, jsonfile)
+
 current_dir = os.path.dirname(__file__)
 
 for name in candidateToIDMap:
+    getTopContributors(name)
     for key, val in issueToIndustryMap.items():
         getContributionsByIssue(name, key)
