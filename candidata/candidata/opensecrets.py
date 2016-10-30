@@ -32,6 +32,7 @@ def getContributionsByIssue(candidateString, issueString):
             "cycle": "2016",
             "output": "json"
         }
+        print(args ["cid"], args ["ind"])
         r = requests.get("http://www.opensecrets.org/api/", args)
         r = r.json()
 
