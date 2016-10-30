@@ -1,6 +1,8 @@
 import requests
+import json
+import os
 
-# correct discrepencies betwwen APIs
+# correct discrepencies between APIs
 candidateMap = {
     "hillary-clinton": "hillary-clinton",
     "donald-trump": "donald-trump",
@@ -12,6 +14,7 @@ issueMap = {
     "Terrorism": "terrorism",
     "Environment": "environment"
 }
+
 
 def getRecentStatementRulings(candidateString, issueString):
 
@@ -39,5 +42,11 @@ def getRecentStatementRulings(candidateString, issueString):
         # ...and put them in the object
         statementsAndRulings [i] = [statement, ruling]
 
-    print(statementsAndRulings)
-    return statementsAndRulings
+    current_dir = os.path.dirname(__file__)
+    file = os.path.join(current_dir, "data", "pf-%s-%s.json" %(candidateString, issueString))
+    with open(file, mode="w") as jsonfile:
+        json.dump(statementsAndRulings, jsonfile)
+
+for name in candidateMap:
+    for key, val in issueMap.items():
+        getRecentStatementRulings(name, key)
