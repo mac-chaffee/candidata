@@ -23,13 +23,14 @@ def getRecentStatementRulings(candidateString, issueString):
         "order_by": "ruling_date",
         "speaker__name_slug": candidateString,
         "subject__subject_slug": issueMap[issueString],
+        "limit": 5,
         "format": "json"
     }
     r = requests.get("http://www.politifact.com/api/v/2/statement/", args)
     r = r.json()
 
     # loop through the 5 statements/rulings we want to use
-    for i in range(5):
+    for i in range(len(r["objects"])):
 
         # get the statements and rulings...
         statement = r ["objects"] [i] ["statement"]
@@ -40,6 +41,3 @@ def getRecentStatementRulings(candidateString, issueString):
 
     print(statementsAndRulings)
     return statementsAndRulings
-
-# local testing
-getRecentStatementRulings("hillary-clinton", "Health Care")
