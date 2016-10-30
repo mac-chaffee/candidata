@@ -28,7 +28,7 @@
         {% for entry in request.session.os_data.gary_os %}
         <p>
           <span class="industryName">{{entry.industryTitle}}</span>
-          <span class="contribution">{{entry.contribution}}</span>
+          <span class="contribution">{{ entry.contribution | nice_format }}</span>
         </p>
         {% endfor %}
       </div>
@@ -42,7 +42,7 @@
         {% for entry in request.session.os_data.donald_os %}
         <p>
           <span class="industryName">{{entry.industryTitle}}</span>
-          <span class="contribution">{{entry.contribution}}</span>
+          <span class="contribution">{{ entry.contribution | nice_format }}</span>
         </p>
         {% endfor %}
       </div>
