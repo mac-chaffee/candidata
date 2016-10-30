@@ -18,8 +18,9 @@ def getContributionsByIssue(candidateString, issueString):
     # Get a list of industries that correspond to the issueString
     industries = issueToIndustryMap [issueString]
 
-    # A dictionary in the form {industryName: monetaryContribution}
-    contributionsByIndustry = {}
+    # A list of dictionaries in the form {industryTitle: value, contribution: value}
+    contributionsByIndustry = []
+    industryEntry = {}
 
     # Loop through all industries that are tied to the given issue
     for industryString in industries:
@@ -35,12 +36,19 @@ def getContributionsByIssue(candidateString, issueString):
         r = r.json()
 
         # Get the title of the industry and their contribution to the candidate campaign
+        industryEntry = {}
         industryTitle = r ["response"] ["candIndus"] ["@attributes"] ["industry"]
         contribution = r ["response"] ["candIndus"] ["@attributes"] ["total"]
-        contributionsByIndustry [industryTitle] = int(contribution)
+
+        contributionsByIndustry.append(
+            {
+                "industryTitle": industryTitle,
+                "contribution": int(contribution)
+            }
+        );
 
     print(contributionsByIndustry)
     return contributionsByIndustry
 
 # Test
-getContributionsByIssue("hillary-clinton", "Economy")
+getContributionsByIssue("hillary-clinton", "Terrorism")
