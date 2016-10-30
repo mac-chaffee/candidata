@@ -14,10 +14,10 @@
             <span class="industryName">Big Farma' Brown</span>
             <span class="contribution">$57934872</span>
           </p>
-          {% for key, values in request.session.os_data.hillary_os %}
+          {% for entry in request.session.os_data.hillary_os %}
           <p>
-            <span class="industryName">{{key}}</span>
-            <span class="contribution">{{values}}</span>
+            <span class="industryName">{{entry ["industryTitle"]}}</span>
+            <span class="contribution">{{entry ["contribution"]}}</span>
           </p>
           {% endfor %}
         </div>
@@ -33,6 +33,12 @@
           <span class="industryName">Big Farma' Brown</span>
           <span class="contribution">$57934872</span>
         </p>
+        {% for entry in request.session.os_data.gary_os %}
+        <p>
+          <span class="industryName">{{entry ["industryTitle"]}}</span>
+          <span class="contribution">{{entry ["contribution"]}}</span>
+        </p>
+        {% endfor %}
       </div>
     </div>
     <div class="candidate-col">
@@ -45,6 +51,12 @@
           <span class="industryName">Big Farma' Brown</span>
           <span class="contribution">$57934872</span>
         </p>
+        {% for entry in request.session.os_data.donald_os %}
+        <p>
+          <span class="industryName">{{entry ["industryTitle"]}}</span>
+          <span class="contribution">{{entry ["contribution"]}}</span>
+        </p>
+        {% endfor %}
       </div>
     </div>
 </div>
