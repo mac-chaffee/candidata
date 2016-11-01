@@ -5,6 +5,7 @@ body {
   text-align: center;
   background-color: #4E4E4E;
   min-height: 1000px;
+  background-size: cover;
 }
 
 .top-form {
