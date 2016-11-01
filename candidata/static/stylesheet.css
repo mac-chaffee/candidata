@@ -43,8 +43,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 150vh;
   width: 30vw;
+  min-width: 300px;
   padding: 5px 10px 0px 10px;
   box-shadow: 0 0 4px rgba(0,0,0,.14),0 4px 8px rgba(0,0,0,.28);
   border-style: solid;
@@ -122,8 +122,11 @@ span.headingOutside {
 }
 .candidate-col {
   padding: 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-@media (max-width: 850px) {
+@media (max-width: 870px) {
   .candidate-row {
     flex-direction: column;
     align-items: center;
