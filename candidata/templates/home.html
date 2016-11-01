@@ -17,7 +17,7 @@
     <div class="candidate-col animated fadeIn">
       <img class="head" src="{% static 'donald.png' %}" />
       <div id="donald-trump-div" class="candidate-data">
-        <h1>Donald Trump</h1>
+        <h2>Donald Trump</h2>
         <span class="headingInBox">POLLING AVERAGE</span>
         <span class="polling-number">
           {{request.session.polling_data.donald_polling}}%
@@ -30,7 +30,7 @@
         </p>
         {% endfor %}
       </div>
-      <h4>Top Contributors</h4>
+      <span class="headingOutside">Top Contributors</span>
       {% for entry in request.session.top_contribs.donald_contribs %}
       <p>
         <span class="industryName">{{entry.industryTitle}}</span>
@@ -41,7 +41,7 @@
     <div class="candidate-col animated fadeIn">
       <img class="head" src="{% static 'gary.png' %}" />
       <div id="gary-johnson-div" class="candidate-data">
-        <h1>Gary Johnson</h1>
+        <h2>Gary Johnson</h2>
         <span class="headingInBox">POLLING AVERAGE</span>
         <span class="polling-number">
           {{request.session.polling_data.gary_polling}}%
@@ -54,7 +54,7 @@
         </p>
         {% endfor %}
       </div>
-      <h4>Top Contributors</h4>
+      <span class="headingOutside">Top Contributors</span>
       {% for entry in request.session.top_contribs.gary_contribs %}
       <p>
         <span class="industryName">{{entry.industryTitle}}</span>
@@ -65,7 +65,7 @@
     <div class="candidate-col animated fadeIn">
         <img class="head" src="{% static 'hillary.png' %}" />
         <div id="hillary-clinton-div" class="candidate-data">
-          <h1>Hillary Clinton</h1>
+          <h2>Hillary Clinton</h2>
           <span class="headingInBox">POLLING AVERAGE</span>
           <span class="polling-number">
             {{request.session.polling_data.hillary_polling}}%
@@ -78,7 +78,7 @@
           </p>
           {% endfor %}
         </div>
-        <h4>Top Contributors</h4>
+        <span class="headingOutside">Top Contributors</span>
         {% for entry in request.session.top_contribs.hillary_contribs %}
         <p>
           <span class="industryName">{{entry.industryTitle}}</span>

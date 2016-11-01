@@ -8,6 +8,7 @@
     <div class="candidate-col animated fadeInUp">
       <img class="head" src="{% static 'donald.png' %}" />
       <div id="donald-trump-div" class="candidate-data">
+        <h2>Donald Trump</h2>
         <span class="headingInBox">POLLING AVERAGE</span>
         <span class="polling-number">
           {{request.session.polling_data.donald_polling}}%
@@ -39,6 +40,7 @@
     <div class="candidate-col animated fadeInUp">
       <img class="head" src="{% static 'gary.png' %}" />
       <div id="gary-johnson-div" class="candidate-data">
+        <h2>Gary Johnson</h2>
         <span class="headingInBox">POLLING AVERAGE</span>
         <span class="polling-number">
           {{request.session.polling_data.gary_polling}}%
@@ -70,6 +72,7 @@
     <div class="candidate-col animated fadeInUp">
         <img class="head" src="{% static 'hillary.png' %}" />
         <div id="hillary-clinton-div" class="candidate-data">
+          <h2>Hillary Clinton</h2>
           <span class="headingInBox">POLLING AVERAGE</span>
             <span class="polling-number">
               {{request.session.polling_data.hillary_polling}}%
